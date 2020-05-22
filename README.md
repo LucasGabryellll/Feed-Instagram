@@ -1,6 +1,6 @@
 # Interface Instagram
 # 💻 Projeto:
-Recriação do Feed do Instagram no `Dark-mode` com animação ao Carregar imagens 
+Recriação do Feed do Instagram no `Dark-mode` com uma simples animação ao Carregar imagens. 
 
 <p align="center">
   <img alt="GitHub language count" src=https://github.com/LucasGabryellll/Feed-Instagram/blob/master/src/imageResultado/apresentacao.gif>
