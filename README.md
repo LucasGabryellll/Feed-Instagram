@@ -9,11 +9,11 @@
   - No prompt de comando digitar o comando: `npm install expo-cli --global`
  
   ## ✔️ Rodando o Expo apos instalado:
-   - No prompt de comando digitar: `yarn start`
+   - No prompt de comando da `Pasta` do Projeto digitar: `yarn start`
    - Caso não Tenha o yarn pode digitar: `expo start`
  
   ## ✔️ Rodando o sevidor:
-  - No prompt de comando digitar o comando: `yarn json-server server.json -d 1000`
+  - No vsCode escrever o comando: `yarn json-server server.json -d 1000`
 
   ## ❗ Problemas em carregar as Imagens:
   Caso as imagens do Feed não apareçam no Android:
