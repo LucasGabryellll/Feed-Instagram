@@ -1,6 +1,5 @@
 # Recriando o Feed do Instagram
 
-
 <p align="center">
   <img alt="GitHub language count" src=https://github.com/LucasGabryellll/Feed-Instagram/blob/master/src/imageResultado/apresentacao.gif>
   <img alt="GitHub language count" src=https://github.com/LucasGabryellll/Feed-Instagram/blob/master/src/imageResultado/app.png>
