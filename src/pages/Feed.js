@@ -13,8 +13,9 @@ export default function Feed() {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
-  async function loadPage(pageNumber = page) {
+  async function loadPage(pageNumber = page, shouldRefresh = false) {
     if (total && pageNumber > total) return;
 
     setLoading(true);
@@ -24,10 +25,14 @@ export default function Feed() {
     );
 
     const data = await response.json();
+    
+    //Verifica se o todos os itens foram carregados
     const totalItems = response.headers.get('X-Total-Count');
 
     setTotal(Math.floor(totalItems / 5));
-    setFeed([...feed, ...data]);
+    
+    //se estiver com o shouldRefresh = data else: carrega a lista atual
+    setFeed(shouldRefresh ? data : [...feed, ...data]);
     setPage(pageNumber + 1);
     setLoading(false);
 
@@ -37,8 +42,12 @@ export default function Feed() {
     loadPage();
   }, []);
 
-  function refreshList() {
+  async function refreshList() {
+    setRefreshing(true);
     
+    await loadPage(1, true);
+
+    setRefreshing(false);
   };
 
   return (
@@ -48,7 +57,8 @@ export default function Feed() {
         keyExtractor={post => String(post.id)}
         onEndReached={() => loadPage()}//função executada quando chegar no final da lista
         onEndReachedThreshold={0.1}//a 0.1 do final começa a carregar a lista
-        onRefresh={refreshList()}
+        onRefresh={refreshList}
+        refreshing={refreshing}
         ListFooterComponent={loading && <ActivityIndicator style={ styles.loading } />}//ultimo componente renderizado
         renderItem={({ item }) => (
           <View style={styles.post} >
