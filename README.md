@@ -9,7 +9,7 @@
   - No prompt de comando digitar o comando: `npm install expo-cli --global`
  
   ## ✔️ Rodando o Expo apos instalado:
-   - No prompt de comando da `Pasta` do Projeto digitar: `yarn start`
+   - No prompt de comando na `Pasta` do Projeto digitar: `yarn start`
    - Caso não Tenha o yarn pode digitar: `expo start`
  
   ## ✔️ Rodando o sevidor:
