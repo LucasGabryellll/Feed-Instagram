@@ -1,10 +1,13 @@
-# 💻 Interface Instagram
-- Feed do instagram no Modo-Dark com animação ao carregar Imagens
+# Interface Instagram
+# 💻 Projeto:
+Recriação do Feed do Instagram no `Dark-mode` com animação ao Carregar imagens 
 
 <p align="center">
   <img alt="GitHub language count" src=https://github.com/LucasGabryellll/Feed-Instagram/blob/master/src/imageResultado/apresentacao.gif>
   <img alt="GitHub language count" src=https://github.com/LucasGabryellll/Feed-Instagram/blob/master/src/imageResultado/app.png>
-
+  
+  
+  
   ## ☕ Instalação da Expo-cli:
   - No prompt de comando digitar o comando: `npm install expo-cli --global`
  
