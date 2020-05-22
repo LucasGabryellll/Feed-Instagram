@@ -21,6 +21,7 @@
    - `OBS`: O comando so funciona caso esteja utilizando um Emulador,
     se estiver Usando a Expo no Dispositivo Físico não irá funcionar!.
 
-  ## 🚀 Tecnologias Utiliziadas:
+  ## 🚀 Tecnologias:
+  Esse projeto foi desenvolvido com as seguintes tecnologias:
   - Expo
   - React Native
