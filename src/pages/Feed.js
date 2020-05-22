@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, FlatList, StyleSheet, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+
+import LazyImage from '../components/LazyImage';
 
 import options from '../assets/options.png';
 import like from '../assets/like.png';
 import comment from '../assets/comment.png';
 import send from '../assets/send.png';
 import save from '../assets/save.png';
+import { color } from 'react-native-reanimated';
 
 export default function Feed() {
 
@@ -14,6 +17,7 @@ export default function Feed() {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [viewable, setViewable] = useState([]);
 
   async function loadPage(pageNumber = page, shouldRefresh = false) {
     if (total && pageNumber > total) return;
@@ -25,12 +29,12 @@ export default function Feed() {
     );
 
     const data = await response.json();
-    
+
     //Verifica se o todos os itens foram carregados
     const totalItems = response.headers.get('X-Total-Count');
 
     setTotal(Math.floor(totalItems / 5));
-    
+
     //se estiver com o shouldRefresh = data else: carrega a lista atual
     setFeed(shouldRefresh ? data : [...feed, ...data]);
     setPage(pageNumber + 1);
@@ -44,11 +48,15 @@ export default function Feed() {
 
   async function refreshList() {
     setRefreshing(true);
-    
+
     await loadPage(1, true);
 
     setRefreshing(false);
   };
+
+  const handleViewableChanged = useCallback(({ changed }) => {
+    setViewable(changed.map(({ item }) => item.id));
+  }, []);
 
   return (
     <View style={styles.content}>
@@ -59,7 +67,9 @@ export default function Feed() {
         onEndReachedThreshold={0.1}//a 0.1 do final começa a carregar a lista
         onRefresh={refreshList}
         refreshing={refreshing}
-        ListFooterComponent={loading && <ActivityIndicator style={ styles.loading } />}//ultimo componente renderizado
+        onViewableItemsChanged={handleViewableChanged}
+        viewabilityConfig={{ viewAreaCoveragePercentThreshold: 10 }}
+        ListFooterComponent={loading && <ActivityIndicator style={styles.loading} />}//ultimo componente renderizado
         renderItem={({ item }) => (
           <View style={styles.post} >
             <View style={styles.header} >
@@ -71,7 +81,11 @@ export default function Feed() {
               </TouchableOpacity>
             </View>
 
-            <Image style={styles.postImage} ratio={item.aspectRatio} source={{ uri: item.image }} />
+            <LazyImage
+              shouldLoad={viewable.includes(item.id)}
+              smallSource={{ uri: item.small }}
+              source={{ uri: item.image }}
+            />
 
             <View style={styles.footer} >
               <View style={styles.actions} >
@@ -138,10 +152,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  postImage: {
-    width: `100%`,
-    height: 400
-  },
+
 
   footer: {
     paddingVertical: 15,
@@ -154,7 +165,7 @@ const styles = StyleSheet.create({
   },
 
   colorActions: {
-    tintColor: '#f7f8f9'
+    tintColor: '#f7f8f9',
   },
 
   action: {
