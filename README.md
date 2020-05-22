@@ -1,12 +1,26 @@
-# Recriando o Feed do Instagram
+# 💻 Interface Instagram
+- Feed do instagram no Modo-Dark com animação ao carregar Imagens
 
 <p align="center">
   <img alt="GitHub language count" src=https://github.com/LucasGabryellll/Feed-Instagram/blob/master/src/imageResultado/apresentacao.gif>
   <img alt="GitHub language count" src=https://github.com/LucasGabryellll/Feed-Instagram/blob/master/src/imageResultado/app.png>
 
-## Rodando o sevidor:
- - 'yarn json-server server.json -d 1000'
+  ## ☕ Instalação da Expo-cli:
+  - No prompt de comando digitar o comando: "npm install expo-cli --global"
+ 
+  ## ✔️ Rodando o Expo apos instalado:
+   - No prompt de comando digitar: "yarn start"
+   - Caso não Tenha o yarn pode digitar: "expo start"
+ 
+  ## ✔️ Rodando o sevidor:
+  - No prompt de comando digitar o comando: "yarn json-server server.json -d 1000"
 
-## Problemas em carregar as Imagens!:
-Caso as imagens do Feed não apareçam no Android:
-  - Rodar comando: 'adb reverse tcp:3000 tcp:3000'
+  ## ❗ Problemas em carregar as Imagens:
+  Caso as imagens do Feed não apareçam no Android:
+    - Rodar comando: 'adb reverse tcp:3000 tcp:3000'
+    - OBS: Comando so funciona caso esteja utilizando um Emulador,
+    se estiver Usando a Expo no Dispositivo Físico não irá funcionar!.
+
+  ## 🚀 Tecnologias Utiliziadas:
+  - Expo
+  - React Native
