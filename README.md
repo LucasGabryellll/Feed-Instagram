@@ -4,5 +4,5 @@
  - 'yarn json-server server.json -d 1000'
 
 ## Problemas em carregar as Imagens:
- - Caso as imagens do Feed não apareçam no Android!
+Caso as imagens do Feed não apareçam no Android!
   - Rodar comando: 'adb reverse tcp:3000 tcp:3000'
